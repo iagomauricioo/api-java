@@ -1,9 +1,9 @@
-var forms = document.querySelector("#forms");
-var button = document.querySelector("#submit-button");
-var inputNome = document.querySelector("#input-username");
-var inputPassw = document.querySelector("#input-password");
-var inputEmail = document.querySelector("#input-email");
-var inputTelefone = document.querySelector("#input-tel");
+const forms = document.querySelector("#forms");
+const button = document.querySelector("#submit-button");
+const inputNome = document.querySelector("#input-username");
+const inputPassw = document.querySelector("#input-password");
+const inputEmail = document.querySelector("#input-email");
+const inputTelefone = document.querySelector("#input-tel");
 function cadastrar() {
     if (!inputNome.value || !inputEmail.value || !inputPassw.value || !inputTelefone.value) {
         alert("Por favor, preencha todos os campos obrigatórios.");
