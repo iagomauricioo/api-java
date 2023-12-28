@@ -22,12 +22,13 @@ public class UsuarioController {
         return ResponseEntity.ok(dao.findAll());
     }
 
-    @PostMapping
+    @PostMapping("/usuarios")
     public ResponseEntity<Usuario> postUser(@RequestBody  Usuario usuario) {
         return ResponseEntity.ok(dao.save(usuario));
     }
-    @PutMapping
-    public ResponseEntity<Usuario> putUser(@PathVariable Usuario usuario) {
-        return ResponseEntity.ok(dao.save(usuario));
+    @PutMapping("/usuarios/{id}")
+    public ResponseEntity<Usuario> putUser(@PathVariable Long id, @RequestBody Usuario usuario) {
+        dao.save(usuario);
+        return ResponseEntity.noContent().build();
     }
 }
