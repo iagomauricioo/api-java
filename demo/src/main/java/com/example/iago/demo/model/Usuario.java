@@ -8,13 +8,13 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "nome", nullable = false, length = 200)
+    @Column(name = "nome", nullable = true, length = 200)
     private String name;
-    @Column(name = "email", nullable = false, length = 50, unique = true)
+    @Column(name = "email", nullable = true, length = 50, unique = true)
     private String email;
-    @Column(name = "senha", nullable = false)
+    @Column(name = "senha", nullable = true)
     private String senha;
-    @Column(name = "telefone", nullable = false, length = 15)
+    @Column(name = "telefone", nullable = true, length = 15)
     private String telefone;
 
     public Usuario() {
