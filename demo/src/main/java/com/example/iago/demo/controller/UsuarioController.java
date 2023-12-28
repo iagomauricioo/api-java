@@ -3,6 +3,7 @@ package com.example.iago.demo.controller;
 import com.example.iago.demo.DAO.IUsuario;
 import com.example.iago.demo.model.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,8 +28,14 @@ public class UsuarioController {
         return ResponseEntity.ok(dao.save(usuario));
     }
     @PutMapping("/usuarios/{id}")
-    public ResponseEntity<Usuario> putUser(@PathVariable Long id, @RequestBody Usuario usuario) {
+    public ResponseEntity<Usuario> putUserById(@PathVariable Long id, @RequestBody Usuario usuario) {
         dao.save(usuario);
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Usuario> deleteUser(@PathVariable Integer id) {
+        dao.deleteById(id);
         return ResponseEntity.noContent().build();
     }
 }
