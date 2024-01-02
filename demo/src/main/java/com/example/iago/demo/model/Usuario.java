@@ -9,7 +9,7 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "nome", nullable = true, length = 200)
-    private String name;
+    private String nome;
     @Column(name = "email", nullable = true, length = 50, unique = true)
     private String email;
     @Column(name = "senha", nullable = true)
@@ -21,9 +21,9 @@ public class Usuario {
 
     }
 
-    public Usuario(Integer id, String name, String email, String senha, String telefone) {
+    public Usuario(Integer id, String nome, String email, String senha, String telefone) {
         this.id = id;
-        this.name = name;
+        this.nome = nome;
         this.email = email;
         this.senha = senha;
         this.telefone = telefone;
@@ -38,11 +38,11 @@ public class Usuario {
     }
 
     public String getName() {
-        return name;
+        return nome;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String nome) {
+        this.nome = nome;
     }
 
     public String getEmail() {

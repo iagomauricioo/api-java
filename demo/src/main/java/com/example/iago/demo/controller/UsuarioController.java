@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin("*")
+@RequestMapping("/usuarios")
 public class UsuarioController {
     private IUsuario dao;
 
@@ -18,24 +19,26 @@ public class UsuarioController {
     public UsuarioController(IUsuario dao) {
         this.dao = dao;
     }
-    @GetMapping("/usuarios")
+    @GetMapping
     public ResponseEntity<List<Usuario>> getUsers() {
-        return ResponseEntity.ok(dao.findAll());
+        List<Usuario> lista = dao.findAll();
+        return ResponseEntity.status(200).body(lista);
     }
 
-    @PostMapping("/usuarios")
+    @PostMapping
     public ResponseEntity<Usuario> postUser(@RequestBody  Usuario usuario) {
-        return ResponseEntity.ok(dao.save(usuario));
+        Usuario usuarioNovo = dao.save(usuario);
+        return ResponseEntity.status(201).body(usuarioNovo);
     }
-    @PutMapping("/usuarios/{id}")
-    public ResponseEntity<Usuario> putUserById(@PathVariable Long id, @RequestBody Usuario usuario) {
-        dao.save(usuario);
-        return ResponseEntity.noContent().build();
+    @PutMapping
+    public ResponseEntity<Usuario> putUserById(@RequestBody Usuario usuario) {
+        Usuario usuarioNovo = dao.save(usuario);
+        return ResponseEntity.status(201).body(usuarioNovo);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Usuario> deleteUser(@PathVariable Integer id) {
+    public ResponseEntity<?> deleteUser(@PathVariable Integer id) {
         dao.deleteById(id);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.status(204).build(); //no content
     }
 }
